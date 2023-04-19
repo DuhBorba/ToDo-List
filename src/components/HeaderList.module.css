@@ -1,0 +1,26 @@
+.headerList{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.headerList p{
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.headerList p:first-child{
+  color: var(--blue-300);
+}
+
+.headerList p:last-child{
+  color: var(--purple-300);
+}
+
+.headerList p span{
+  color: var(--gray-200);
+  background: var(--gray-400);
+  padding: 0.125rem 0.5rem;
+  margin-left: 0.5rem;
+  border-radius: 999px;
+}
