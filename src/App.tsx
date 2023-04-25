@@ -26,7 +26,7 @@ export const App = () => {
     <>
       <Header />
       <main className={styles.wrapper}>
-        <Form />
+        <Form tasks={tasks} />
         <HeaderList />
         {
           tasks.map(task => 
