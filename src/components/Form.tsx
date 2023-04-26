@@ -1,21 +1,14 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 
-import { v4 } from 'uuid';
-
 import styles from './Form.module.css';
 
 import { PlusCircle } from "@phosphor-icons/react";
 
 interface propsForm{
-  tasks: {
-    id: string;
-    title: string;
-    isComplete: boolean;
-  }[],
   submitForm: (event: FormEvent, newValue: string) => void,
 }
 
-export const Form = ({ tasks, submitForm} : propsForm) => {
+export const Form = ({ submitForm} : propsForm) => {
 
   const [newValue, setNewValue] = React.useState('');
 

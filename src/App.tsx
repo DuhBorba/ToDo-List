@@ -8,17 +8,25 @@ import { v4 } from 'uuid';
 
 import styles from './App.module.css'
 
+// interface propsTask{
+//   tasks: {
+//     id: string;
+//     title: string;
+//     isComplete: boolean;
+//   }[],
+// }
+
 const tasks = [
-  {
-    id: v4(),
-    title: 'Terminar o desafio',
-    isComplete: false
-  },
-  {
-    id: v4(),
-    title: 'Estudar TypeScript',
-    isComplete: true
-  }
+  // {
+  //   id: v4(),
+  //   title: 'Terminar o desafio',
+  //   isComplete: false
+  // },
+  // {
+  //   id: v4(),
+  //   title: 'Estudar TypeScript',
+  //   isComplete: true
+  // }
 ]
 
 
@@ -51,17 +59,24 @@ export const App = () => {
     <>
       <Header />
       <main className={styles.wrapper}>
-        <Form tasks={tasks} submitForm={submitForm} />
+        <Form submitForm={submitForm} />
         <HeaderList />
         {
-          createNewTask.map(task => 
-            <List 
-              key={task.id}
-              id={task.id} 
-              title={task.title} 
-              isComplete={task.isComplete} 
-              deleteTask={deleteTask}
-            />
+          createNewTask ? (
+            createNewTask.map(task => 
+              <List 
+                key={task.id}
+                id={task.id} 
+                title={task.title} 
+                isComplete={task.isComplete} 
+                deleteTask={deleteTask}
+              />
+            )
+          ) : (
+            <p>
+              <strong>Você ainda não tem tarefas cadastradas</strong>
+              Crie tarefas e organize seus itens a fazer
+            </p>
           )
         }
       </main>
