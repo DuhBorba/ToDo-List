@@ -32,7 +32,7 @@ export const Form = ({ tasks } : propsForm) => {
       isComplete: false
     }
 
-    setCreateNewTask([createNewTask, ...dataTask])
+    setCreateNewTask([...createNewTask, dataTask])
 
     console.log(createNewTask)
   }
