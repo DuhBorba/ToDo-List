@@ -12,10 +12,10 @@ interface propsForm{
     title: string;
     isComplete: boolean;
   }[],
+  submitForm: (event: FormEvent, newValue: string) => void,
 }
 
-export const Form = ({ tasks } : propsForm) => {
-  const [createNewTask, setCreateNewTask] = React.useState(tasks);
+export const Form = ({ tasks, submitForm} : propsForm) => {
 
   const [newValue, setNewValue] = React.useState('');
 
@@ -24,18 +24,9 @@ export const Form = ({ tasks } : propsForm) => {
   }
 
   function handleClickSubmit(event: FormEvent){
-    event.preventDefault();
-
-    const dataTask = {
-      id: v4(), 
-      title: newValue, 
-      isComplete: false
-    }
-
-    setCreateNewTask([...createNewTask, dataTask])
-
-    console.log(createNewTask)
+    submitForm(event, newValue)
   }
+
 
   return (
     <div>
