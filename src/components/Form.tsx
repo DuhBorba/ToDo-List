@@ -11,7 +11,7 @@ interface propsForm{
     id: string;
     title: string;
     isComplete: boolean;
-  },
+  }[],
 }
 
 export const Form = ({ tasks } : propsForm) => {
