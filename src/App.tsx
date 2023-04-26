@@ -37,7 +37,14 @@ export const App = () => {
   
     setCreateNewTask([...createNewTask, dataTask])
   
-    console.log(createNewTask)
+  }
+
+  function deleteTask(id: string){
+    const taskFiltered = createNewTask.filter((task) => {
+      return task.id === id ? 0 : 1;
+    })
+
+    setCreateNewTask(taskFiltered);
   }
 
   return (
@@ -53,6 +60,7 @@ export const App = () => {
               id={task.id} 
               title={task.title} 
               isComplete={task.isComplete} 
+              deleteTask={deleteTask}
             />
           )
         }
