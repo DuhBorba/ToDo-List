@@ -10,15 +10,12 @@
   margin-bottom: 0.75rem;
 }
 
-.list:last-child{
-  margin-bottom: 0;
-}
-
 .list label{
   flex: 1;
   font-size: 0.875rem;
   line-height: 1.25;
   color: var(--gray-100);
+  cursor: grab;
 }
 
 .list label.checked {
