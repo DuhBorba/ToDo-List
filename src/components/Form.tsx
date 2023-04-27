@@ -39,7 +39,7 @@ export const Form = ({
       isComplete: false
     }
   
-    setCreateNewTask([...createNewTask, dataTask])
+    setCreateNewTask([dataTask, ...createNewTask]);
     
     setNewValue('');
   }
