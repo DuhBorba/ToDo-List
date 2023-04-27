@@ -17,6 +17,7 @@ interface PropsList{
       title: string;
       isComplete: boolean;
   }[]>>;
+  provided: any;
 }
 
 export const List = ({
@@ -24,7 +25,8 @@ export const List = ({
   title, 
   isComplete,  
   createNewTask,
-  setCreateNewTask
+  setCreateNewTask,
+  provided
 } : PropsList) => {
   const [taskComplete, setTaskComplete] = React.useState(isComplete);
 
@@ -59,22 +61,25 @@ export const List = ({
   }
 
 
-  return (
-    <>      
-      <div className={styles.list}>
-        <input 
-          onClick={handleIsComplete} 
-          type="checkbox" 
-          id={id} 
-          defaultChecked={taskComplete} />
-        <label 
-        htmlFor={id}
-        className={taskComplete ? styles.checked : ''}
-        >{title}</label>
-        <button onClick={handleDeleteTask} title="Deletar Tarefa">
-          <Trash size={20} color="#808080" />
-        </button>
-      </div>
-    </>
+  return (    
+    <li 
+      className={styles.list} 
+      ref={provided.innerRef} 
+      {...provided.draggableProps} 
+      {...provided.dragHandleProps}
+    >
+      <input 
+        onClick={handleIsComplete} 
+        type="checkbox" 
+        id={id} 
+        defaultChecked={taskComplete} />
+      <label 
+      htmlFor={id}
+      className={taskComplete ? styles.checked : ''}
+      >{title}</label>
+      <button onClick={handleDeleteTask} title="Deletar Tarefa">
+        <Trash size={20} color="#808080" />
+      </button>
+    </li>
   )
 }
