@@ -8,6 +8,8 @@ import { v4 } from 'uuid';
 
 import styles from './App.module.css'
 
+import Clipboard from '../src/assets/clipboard.svg'
+
 // interface propsTask{
 //   tasks: {
 //     id: string;
@@ -45,7 +47,7 @@ export const App = () => {
         />
         <HeaderList tasks={createNewTask} />
         {
-          createNewTask ? (
+          createNewTask.length !== 0 ? (
             createNewTask.map(task => 
               <List 
                 key={task.id}
@@ -57,10 +59,15 @@ export const App = () => {
               />
             )
           ) : (
-            <p>
-              <strong>Você ainda não tem tarefas cadastradas</strong>
-              Crie tarefas e organize seus itens a fazer
-            </p>
+            <div className='clipboard'>
+              <img src={Clipboard} alt="Ícone Clipboard" />
+              <p>
+                <strong>Você ainda não tem tarefas cadastradas</strong>
+              </p>
+              <p>
+                Crie tarefas e organize seus itens a fazer
+              </p>
+            </div>
           )
         }
       </main>

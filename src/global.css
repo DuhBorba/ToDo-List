@@ -40,3 +40,15 @@ body, input, textarea, button{
   font-weight: 400;
   font-size: 1rem;
 }
+
+.clipboard{
+  text-align: center;
+}
+
+.clipboard img{
+  margin-bottom: 1rem;
+}
+
+.clipboard p{
+  color: var(--gray-300);
+}
