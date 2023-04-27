@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent } from 'react';
+import React, { ChangeEvent, FormEvent, InvalidEvent } from 'react';
 
 import { v4 } from 'uuid';
 
@@ -40,9 +40,9 @@ export const Form = ({
     }
   
     setCreateNewTask([...createNewTask, dataTask])
-  
+    
+    setNewValue('');
   }
-
 
   return (
     <div>
@@ -52,6 +52,7 @@ export const Form = ({
           type="text" 
           placeholder="Adicione uma nova tarefa" 
           value={newValue}
+          required
         />
         <button>Criar <PlusCircle size={20} /></button>
       </form>
