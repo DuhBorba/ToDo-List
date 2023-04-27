@@ -54,7 +54,7 @@ export const Form = ({
           value={newValue}
           required
         />
-        <button>Criar <PlusCircle size={20} /></button>
+        <button><span>Criar</span> <PlusCircle size={20} /></button>
       </form>
     </div>
   )
