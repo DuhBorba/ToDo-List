@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
 import styles from './List.module.css';
 import { Trash } from '@phosphor-icons/react';
@@ -7,26 +7,67 @@ interface PropsList{
   id: string;
   title: string;
   isComplete: boolean;
-  deleteTask: (id: string) => void;
+  createNewTask: {
+      id: string;
+      title: string;
+      isComplete: boolean;
+  }[];
+  setCreateNewTask: React.Dispatch<React.SetStateAction<{
+      id: string;
+      title: string;
+      isComplete: boolean;
+  }[]>>;
 }
 
-export const List = ({id, title, isComplete, deleteTask} : PropsList) => {
+export const List = ({
+  id, 
+  title, 
+  isComplete,  
+  createNewTask,
+  setCreateNewTask
+} : PropsList) => {
   const [taskComplete, setTaskComplete] = React.useState(isComplete);
+
+  function toggleCompleteTask(){
+    const newTasks = createNewTask.map((task) => {
+      if(task.id === id){
+        return {
+          id: task.id, 
+          title: task.title,
+          isComplete: !task.isComplete
+        }
+      } else {
+        return task;
+      }
+    })
+
+    setCreateNewTask(newTasks)
+  }
+
 
   function handleIsComplete(){
     setTaskComplete(!taskComplete);
+    toggleCompleteTask();
   }
 
   function handleDeleteTask(){
-    deleteTask(id);
+    const taskFiltered = createNewTask.filter((task) => {
+      return task.id === id ? 0 : 1;
+    })
+
+    setCreateNewTask(taskFiltered);
   }
+
 
   return (
     <>      
       <div className={styles.list}>
-        <input type="checkbox" id={id} defaultChecked={taskComplete} />
+        <input 
+          onClick={handleIsComplete} 
+          type="checkbox" 
+          id={id} 
+          defaultChecked={taskComplete} />
         <label 
-        onClick={handleIsComplete}
         htmlFor={id}
         className={taskComplete ? styles.checked : ''}
         >{title}</label>

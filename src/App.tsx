@@ -17,50 +17,33 @@ import styles from './App.module.css'
 // }
 
 const tasks = [
-  // {
-  //   id: v4(),
-  //   title: 'Terminar o desafio',
-  //   isComplete: false
-  // },
-  // {
-  //   id: v4(),
-  //   title: 'Estudar TypeScript',
-  //   isComplete: true
-  // }
+  {
+    id: v4(),
+    title: 'Terminar o desafio',
+    isComplete: false
+  },
+  {
+    id: v4(),
+    title: 'Estudar TypeScript',
+    isComplete: true
+  }
 ]
 
 
 export const App = () => {
   const [createNewTask, setCreateNewTask] = React.useState(tasks);
 
-
-  function submitForm(event: FormEvent, newValue: string){
-    event.preventDefault();
   
-    const dataTask = {
-      id: v4(), 
-      title: newValue, 
-      isComplete: false
-    }
-  
-    setCreateNewTask([...createNewTask, dataTask])
-  
-  }
-
-  function deleteTask(id: string){
-    const taskFiltered = createNewTask.filter((task) => {
-      return task.id === id ? 0 : 1;
-    })
-
-    setCreateNewTask(taskFiltered);
-  }
 
   return (
     <>
       <Header />
       <main className={styles.wrapper}>
-        <Form submitForm={submitForm} />
-        <HeaderList />
+        <Form 
+          createNewTask={createNewTask} 
+          setCreateNewTask={setCreateNewTask} 
+        />
+        <HeaderList tasks={createNewTask} />
         {
           createNewTask ? (
             createNewTask.map(task => 
@@ -69,7 +52,8 @@ export const App = () => {
                 id={task.id} 
                 title={task.title} 
                 isComplete={task.isComplete} 
-                deleteTask={deleteTask}
+                createNewTask={createNewTask}
+                setCreateNewTask={setCreateNewTask}
               />
             )
           ) : (

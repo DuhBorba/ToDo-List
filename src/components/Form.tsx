@@ -1,14 +1,27 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 
+import { v4 } from 'uuid';
+
 import styles from './Form.module.css';
 
 import { PlusCircle } from "@phosphor-icons/react";
 
 interface propsForm{
-  submitForm: (event: FormEvent, newValue: string) => void,
+  createNewTask: {
+    id: string;
+    title: string;
+    isComplete: boolean;
+  }[];
+  setCreateNewTask: React.Dispatch<React.SetStateAction<{
+      id: string;
+      title: string;
+      isComplete: boolean;
+  }[]>>;
 }
 
-export const Form = ({ submitForm} : propsForm) => {
+export const Form = ({ 
+  createNewTask, setCreateNewTask
+} : propsForm) => {
 
   const [newValue, setNewValue] = React.useState('');
 
@@ -16,8 +29,18 @@ export const Form = ({ submitForm} : propsForm) => {
     setNewValue(event.target.value);
   }
 
+
   function handleClickSubmit(event: FormEvent){
-    submitForm(event, newValue)
+    event.preventDefault();
+  
+    const dataTask = {
+      id: v4(), 
+      title: newValue, 
+      isComplete: false
+    }
+  
+    setCreateNewTask([...createNewTask, dataTask])
+  
   }
 
 
