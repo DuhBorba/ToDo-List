@@ -1,10 +1,8 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 import { Header } from './components/Header'
 import { Form } from './components/Form';
 import { HeaderList } from './components/HeaderList';
 import { List } from './components/List';
-
-import { v4 } from 'uuid';
 
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 
@@ -38,7 +36,7 @@ export const App = () => {
   }, [createNewTask]);
 
   return (
-    <div>
+    <>
       <Header />
       <main className={styles.wrapper}>
         <Form 
@@ -91,6 +89,6 @@ export const App = () => {
           </Droppable>
         </DragDropContext>
       </main>
-    </div>
+    </>
   )
 }

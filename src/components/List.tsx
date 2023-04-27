@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 
 import styles from './List.module.css';
 import { Trash } from '@phosphor-icons/react';
