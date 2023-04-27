@@ -11,14 +11,12 @@ import styles from './App.module.css'
 import Clipboard from '../src/assets/clipboard.svg'
 
 interface propsTask{
-  tasks: {
-    id: string;
-    title: string;
-    isComplete: boolean;
-  },
+  id: string;
+  title: string;
+  isComplete: boolean;
 }
 
-const tasks = JSON.parse(localStorage.getItem('tasksTodo'));
+const tasks: propsTask[] = JSON.parse(localStorage.getItem('tasksTodo') || '[]');
 
 export const App = () => {
   const [createNewTask, setCreateNewTask] = React.useState(tasks);
