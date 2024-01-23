@@ -17,7 +17,8 @@ Para o desenvolvimento foi necessário:
 
 ## Resultado
 
-![GIF Exemplo]([https://github.com/DuhBorba/dev-finances/blob/main/create.gif](https://github.com/DuhBorba/ToDo-List/blob/main/example.gif))
+![GIF Exemplo](https://github.com/DuhBorba/ToDo-List/blob/main/example.gif)
+(GIF de Exemplo pode ficar com qualidade ruim)
 
 ## Autores
 
